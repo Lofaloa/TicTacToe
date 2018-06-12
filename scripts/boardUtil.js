@@ -10,11 +10,20 @@ function columnAllEqualToType(arr, column, type) {
   return i == arr.length;
 }
 
-  //True if the board contains a column of the given type.
+//True if the board's descending diagonal is equal to the given type.
 function descendingDiagonalAllEqualToType(arr, type) {
   let i = 0;
   while (i < arr.length && arr[i][i] == type) {
     i++;
   }
-  return i == arr;
+  return i == arr.length;
+}
+
+//True if the board's rising diagonal is equal to the given type.
+function risingDiagonalAllEqualToType(arr, type) {
+   let i = 0;
+   while (i < arr.length && arr[i][arr.length - 1 - i] == type) {
+     i++;
+   }
+   return i == arr.length;
 }

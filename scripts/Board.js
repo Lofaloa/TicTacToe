@@ -1,6 +1,8 @@
 class Board {
   constructor() {
-    this._boxes = [new Array(3), new Array(3), new Array(3)];
+    this._boxes = [[new Box("empty"), new Box("empty"), new Box("empty")],
+	           [new Box("empty"), new Box("empty"), new Box("empty")],
+	           [new Box("empty"), new Box("empty"), new Box("empty")]];
   }
 
   //Gets the boxes of the board.
@@ -36,18 +38,14 @@ class Board {
     return false;
   }
 
-  //True if the board contains a column of the given type.
+  //True if the board rising diagonal values are all equal to type.
   hasRisingDiagonal(type) {
-
+    return risingDiagonalAllEqualToType(this.boxes, type);
   }
 
-  //True if the board contains a column of the given type.
+  //True if the board descending diagonal values are all equal to type.
   hasDescendingDiagonal(type) {
-    let i = 0;
-    while (i < this.boxes.length && this.boxes[i][i] == type) {
-      i++;
-    }
-    return i == this.boxes.length;
+    return descendingDiagonalAllEqualToType(this.boxes, type);
   }
 
 
