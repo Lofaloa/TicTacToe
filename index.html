@@ -4,13 +4,33 @@
   <head>
     <title>Tic Tac Toe</title>
     <meta charset="utf-8">
-    <script src="./scripts/Box.js"></script>
-    <script src="./scripts/boardUtil.js"></script>
-    <script src="./scripts/Board.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
   </head>
 
   <body>
     <h1>Tic Tac Toe</h1>
-
+    <table>
+	<tr>
+		<td><span id="topLeft"></span></td>
+		<td><span id="topMiddle"></span></td>
+		<td><span id="topRight"></span></td>
+	</tr>
+	<tr>
+		<td><span id="middleLeft"></span></td>
+		<td><span id="center"></span></td>
+		<td><span id="middleRight"></span></td>
+	</tr>
+	<tr>
+		<td><span id="bottomLeft"></span></td>
+		<td><span id="bottomMiddle"></span></td>
+		<td><span id="bottomRight"></span></td>
+	</tr>
+    </table>
+    <script src="./scripts/Box.js"></script>
+    <script src="./scripts/boardUtil.js"></script>
+    <script src="./scripts/Board.js"></script>
+    <script src="./scripts/main.js"></script>
   </body>
 </html>
+
