@@ -1,5 +1,7 @@
 //True if a given row contains only the given.
-let isRowOf = (row, avatar) => row.every(box => box == avatar);
+function isRowOf(row, avatar) {
+	return row.every(box => box == avatar);
+}
 
 //True if the given board contains a row of the given avatar.
 function hasRowOf(boxes, avatar) {

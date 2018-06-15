@@ -1,11 +1,12 @@
 let board = new Board();
-let avatars = ['X', 'O'];
-let currentPlayer = 0;
+let currentPlayer = 'X';
+let polling = setInterval(win, 250);
+let scores = {'X': 0, 'O': 0};
 
 //Assigns the value the board and displays it.
 function assignValueTo(box, value) {
 	let boxPos = $(`#${$(box).attr('id')}`).data('pos');
-	board.boxes[boxPos.row][boxPos.col] = value;
+	box = board.boxes[boxPos.row][boxPos.col] = value;
 }
 
 //Displays the given value in the given box.
@@ -20,28 +21,58 @@ function play(box, value) {
 }
 
 function nextPlayer() {
-	if (currentPlayer == 0) {
-		currentPlayer = 1;
+	if (currentPlayer == 'X') {
+		currentPlayer = 'O';
 	} else {
-		currentPlayer = 0;
+		currentPlayer = 'X';
 	}
 }
 
-function game(box) {
-	let isOver = false;
-	if (!isOver) {
-		play(box, avatars[currentPlayer]);
-		isOver = board.hasWinnerOf(board.boxes, avatars[currentPlayer]);
-		nextPlayer();
-		console.log(isOver)
-		if (isOver) console.log('Player ' + (currentPlayer + 1) + ' wins.');
+function hasWon(player) {
+	return board.isWinning(player);
+}
+
+function win() {
+	console.log('test');
+	if (hasWon(currentPlayer)) {
+		updateScore(currentPlayer);
+		$('body').append("<button id='replay'>Replay</button>");
+		$('#replay').click(newGame);
+		clearInterval(polling);
 	}
 }
 
+function updateScore(player) {
+	if (player == 'X') {
+		scores.X++;
+		$('#scoreX').text(scores.X);
+	} else {
+		scores.O++;
+		$('#scoreO').text(scores.O);
+	}
+}
 
+function clearBoard() {
+	for (let i = 0; i < board.boxes.length; i++) {
+		let tableRow = $('tr').eq(i);
+		for (let j = 0; j < board.boxes[i].length; j++) {
+			tableRow.children().eq(j).text(' ');
+		}
+	}
+}
+
+function newGame() {
+	board = new Board();
+	clearBoard();
+	$('#replay').hide();
+	polling = setInterval(win, 250);
+}
 
 $('document').ready(function() {
 	$('td').click(function() {
-		game(this);
+		if (!hasWon(currentPlayer)) { 
+			play(this, currentPlayer);
+			if (!hasWon(currentPlayer)) nextPlayer();
+		}
 	});
 });
