@@ -46,7 +46,7 @@ function isDescendingDiagonalOf(board, player) {
 //True if the board's rising diagonal belongs to the given player.
 function isRisingDiagonalOf(board, player) {
 	let i = 0;
-	while (i < board.length && board[i][boxes.length - 1 - i] == player) {
+	while (i < board.length && board[i][board.length - 1 - i] == player) {
      		i++;
    	}
    	return i == board.length;

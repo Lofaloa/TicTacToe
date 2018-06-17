@@ -1,21 +1,29 @@
 class Game {
 	constructor() {
-		this._board = [['','',''],['','',''],['','','']];
+		this._board = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']];
 		this._players = [{name: 'X', score: 0},
                      {name: 'O', score: 0}]; 
 		this._currentPlayer = 0;
 	}
 
+	//Gets the board of the game.
 	get board() {
 		return this._board;
 	}
 
-	get players() {
-		return this._players;
+	//Gets the current player of the game.
+	get currentPlayer() {
+		return this._players[this._currentPlayer];
 	}
 
-	get currentPlayer() {
-		return this._currentPlayer;
+	//Tells if the two players are even. They're even when the board is totally
+	//full of player's piece.
+	get isEven() {
+		let i = 0;
+		while (i < this.board.length && this.board[i].includes(' ')) {
+			i++;
+		}
+		return i < this.board.length;
 	}
 
 	//Clears the board from all the players.
@@ -33,27 +41,30 @@ class Game {
 		this.board[row][col] = player;
 	}
 
-	//Passes the hand to hte next player.
+	//Passes the hand to the next player if the current has not won yet.
 	nextPlayer() {
-		this._currentPlayer = 1 - this._currentPlayer;	
+		if (!this.hasWon(this.currentPlayer)) {
+			this._currentPlayer = 1 - this._currentPlayer;	
+		}
 	}
 
-	//Increments the score of the player by one.i
+	//Increments the score of the player by one.
 	incScore(player) {
 		player.score++;
 	}
 
-	//Tells if the given palyer has won. A player wins by taking a row, a column
+	//Tells if the given player has won. A player wins by taking a row, a column
 	//or a diagonal of the board.
 	hasWon(player) {
-		return hasRowOf(this.board, player) || hasColumnOf(this.board, player) ||
-	         hasDiagonalOf(this.board, player);
+		return hasRowOf(this.board, player.name) || 
+		       hasColumnOf(this.board, player.name) ||
+	         hasDiagonalOf(this.board, player.name);
 	}
 	
-	//Tells if a round of the game is over. A game can hold an unlimited number 
-	//of rounds.
+	//Tells if a round of the game is over. It is over if the currentPlayer won
+	// or if the board is full.	A game can hold an unlimited number of rounds.
 	isRoundOver() {
-		//A round is over when a player wins or the board is full (players are even)	
+		return this.hasWon(this.currentPlayer) || this.isEven;	
 	}
 
 }
