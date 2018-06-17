@@ -1,4 +1,6 @@
 class Game {
+	//Initializes this game with an empty board and its two players. The current
+	//player is initially X.
 	constructor() {
 		this._board = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']];
 		this._players = [{name: 'X', score: 0},
@@ -20,10 +22,10 @@ class Game {
 	//full of player's piece.
 	get isEven() {
 		let i = 0;
-		while (i < this.board.length && this.board[i].includes(' ')) {
+		while (i < this.board.length && !this.board[i].includes(' ')) {
 			i++;
 		}
-		return i < this.board.length;
+		return i == this.board.length;
 	}
 
 	//Clears the board from all the players.

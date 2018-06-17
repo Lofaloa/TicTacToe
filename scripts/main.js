@@ -15,6 +15,17 @@ function makeAMove(box) {
 			showMove(box, game.currentPlayer);	
 			game.nextPlayer();
 		}
+		endRound();
+}
+
+//Gives a point to the winner. Shows a replay button. If the round is even, 
+//no player get a point, the replay button is also displayed.
+function endRound() {
+	if (game.isRoundOver()) {
+		game.currentPlayer.score++;
+		showScores();
+		showReplayButton();
+	}
 }
 
 $('document').ready(function() {
