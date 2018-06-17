@@ -1,6 +1,57 @@
-td {
-	border: 1px solid black;
-	height: 50px;
-	width: 50px;
+h1 {
 	text-align: center;
+	font-family: 'Acme', sans-serif;
+}
+
+#score {
+	margin-bottom: 10px;
+}
+
+#crossHeader, #circleHeader {
+	width: 20px;
+	margin: 0 auto;
+	vertical-align: top;
+}
+
+table {
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+#score td {
+	border: 1px solid black;
+	height: 25px;
+	width: 25px;
+	text-align: center;
+	font-family: 'Acme', sans-serif;
+}
+
+#board td {
+	border: 5px solid black;
+	height: 100px;
+	width: 100px;
+	text-align: center;
+}
+
+#replay {
+	position: relative;
+	left: 50%;
+	margin-top: 10px;
+	padding: 1em;
+	transform: translateX(-50%);
+	color: black;
+	background: transparent;
+	border: 2px solid black;
+}
+
+#replay:hover {
+	position: relative;
+	left: 50%;
+	margin-top: 10px;
+	padding: 1em;
+	transform: translateX(-50%);
+	color: white;
+	background: black;
+	border: 2px solid black;
+
 }

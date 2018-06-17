@@ -4,7 +4,6 @@ let game = new Game();
 function writePlayerTo(box) {
 		let boxPos = box.data('pos');
 		game.setBoxTo(boxPos.row, boxPos.col, game.currentPlayer.name);
-		return game.hasWon(game.currentPlayer);
 }
 
 //Makes the current player play and passes to the next player if the current
@@ -25,11 +24,13 @@ function endRound() {
 		if (!game.isEven) game.currentPlayer.score++;
 		showScores();
 		showReplayButton();
+		$('td').off("click");
 	}
 }
 
 function startNewRound() {
 	clearBoard();
+	$('td').click(function() {makeAMove($(this));});
 	$('#replay').remove();
 }
 

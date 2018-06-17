@@ -1,8 +1,18 @@
 //Shows the current player in the given box.
 function showMove(box, player) {
-	$(box).text(player.name);
+	showIcon(box);
 	if (game.hasWon(player)) console.log(player.name + ' wins the round.');
 	if (game.isEven) console.log('The two players are even.');
+}
+
+//Shows the icon corresponding to the player.
+function showIcon(box) {
+	let posBox = $(box).data('pos');
+	if (game.board[posBox.row][posBox.col] == 'X') {
+		$(box).html("<img src='./images/cross.png' width='50'>");
+	} else {
+		$(box).html("<img src='./images/circle.jpg' width='50'>");
+	}
 }
 
 //Shows a replay button.
@@ -20,9 +30,9 @@ function showScores() {
 //Clears the board from all the player.
 function clearBoard() {
 	game.clearBoard();
-	for (let i = 0; i < $('tr').length; i++) {
-		for (let j = 0; j < $('td').length; j++) {
-			$('tr').eq(i).children().eq(j).text(' ');
+	for (let i = 0; i < $('#board tr').length; i++) {
+		for (let j = 0; j < $('#board td').length; j++) {
+			$('#board tr').eq(i).children().eq(j).text(' ');
 		}
 	}
 }

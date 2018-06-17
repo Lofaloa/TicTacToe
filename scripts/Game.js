@@ -28,6 +28,11 @@ class Game {
 		return i == this.board.length;
 	}
 
+	//Tells if a given box is empty.
+	isEmpty(row, col) {
+		return this.board[row][col] == ' ';
+	}
+
 	//Clears the board from all the players.
 	clearBoard() {
 		setAllArrayTo(this.board, ' ');
@@ -38,9 +43,9 @@ class Game {
 		this.clearBoard();	
 	}
 
-	//Assigns the requested box to the given player.
+	//Assigns te requested empty box to the given player.
 	setBoxTo(row, col, player) {
-		this.board[row][col] = player;
+		if (this.isEmpty(row, col)) this.board[row][col] = player;
 	}
 
 	//Passes the hand to the next player if the current has not won yet.

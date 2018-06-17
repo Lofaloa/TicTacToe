@@ -6,12 +6,20 @@
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./style/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
   </head>
 
   <body>
     <h1>Tic Tac Toe</h1>
-    <p>X: <span id="scoreX">0</span> vs O: <span id="scoreO">0</span></p>
-    <table>
+    <table id="score">
+			<tr>
+				<td><img id="crossHeader" src="./images/cross.png"></td>
+				<td><span id="scoreX">0</span></td>
+				<td><span id="scoreO">0</span></td>
+				<td><img id="circleHeader" src="./images/circle.jpg"</td>
+			</tr>
+		</table>
+    <table id="board">
 			<tr>
 				<td id="topLeft" data-pos='{"row": 0, "col": 0}'></td>
 				<td id="topMiddle" data-pos='{"row": 0, "col": 1}'></td>
