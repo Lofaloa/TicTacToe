@@ -22,10 +22,15 @@ function makeAMove(box) {
 //no player get a point, the replay button is also displayed.
 function endRound() {
 	if (game.isRoundOver()) {
-		game.currentPlayer.score++;
+		if (!game.isEven) game.currentPlayer.score++;
 		showScores();
 		showReplayButton();
 	}
+}
+
+function startNewRound() {
+	clearBoard();
+	$('#replay').remove();
 }
 
 $('document').ready(function() {

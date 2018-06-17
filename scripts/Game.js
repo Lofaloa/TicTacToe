@@ -30,7 +30,7 @@ class Game {
 
 	//Clears the board from all the players.
 	clearBoard() {
-		setAllArrayTo(this.board, '');
+		setAllArrayTo(this.board, ' ');
 	}
 
 	//Makes start a new round.
@@ -48,11 +48,6 @@ class Game {
 		if (!this.hasWon(this.currentPlayer)) {
 			this._currentPlayer = 1 - this._currentPlayer;	
 		}
-	}
-
-	//Increments the score of the player by one.
-	incScore(player) {
-		player.score++;
 	}
 
 	//Tells if the given player has won. A player wins by taking a row, a column
