@@ -1,2 +1,2 @@
 # TicTacToe
-TicTacToe game made in javascript.
+Simple tic tac toe game made in javascript, keep the score, no bot.
