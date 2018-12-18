@@ -36,3 +36,14 @@ function clearBoard() {
 		}
 	}
 }
+
+//Shows the current player.
+function showCurrentPlayer() {
+	if (game.currentPlayer.name === 'X') {
+		$("#circleHeader").parent().css("border", "1px solid black");
+		$("#crossHeader").parent().css("border", "3px solid black");
+	} else {
+		$("#crossHeader").parent().css("border", "1px solid black");
+		$("#circleHeader").parent().css("border", "3px solid black");
+	}
+}
