@@ -22,7 +22,7 @@ function makeAMove(box) {
 //no player get a point, the replay button is also displayed.
 function endRound() {
 	if (game.isRoundOver()) {
-		if (!game.isEven) game.currentPlayer.score++;
+		if (!game.isEven) game.currentPlayer.scoreUp();
 		showScores();
 		showReplayButton();
 		$('td').off("click");

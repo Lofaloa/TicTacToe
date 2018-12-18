@@ -3,8 +3,7 @@ class Game {
 	//player is initially X.
 	constructor() {
 		this._board = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']];
-		this._players = [{name: 'X', score: 0},
-                     {name: 'O', score: 0}]; 
+		this._players = [new Player('X'), new Player('O')]; 
 		this._currentPlayer = 0;
 	}
 

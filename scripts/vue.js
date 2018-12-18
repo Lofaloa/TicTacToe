@@ -39,7 +39,7 @@ function clearBoard() {
 
 //Shows the current player.
 function showCurrentPlayer() {
-	if (game.currentPlayer.name === 'X') {
+	if (game.currentPlayer.isX()) {
 		$("#circleHeader").parent().css("border", "1px solid black");
 		$("#crossHeader").parent().css("border", "3px solid black");
 	} else {

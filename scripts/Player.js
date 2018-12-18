@@ -1,7 +1,7 @@
 class Player {
 
     constructor(name) {
-        if (name != 'X' || name != 'O') {
+        if (name != 'X' && name != 'O') {
             throw "A player should be either X or O!";
         }
         this._name = name;
@@ -20,7 +20,7 @@ class Player {
 
     //Adds a point to this player.
     scoreUp() {
-        this.score++;
+        this._score++;
     }
 
     //Tells if this player is the X player.
