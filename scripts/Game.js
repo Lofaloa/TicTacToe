@@ -17,10 +17,14 @@ class Game {
 		return this._players[this._currentPlayer];
 	}
 
+	get hasNoWinner() {
+		return !this.hasWon(this._players[0]) || !this.hasWon(this._players[1]);
+	}
+
 	//Tells if the two players are even. They're even when the board is totally
 	//full of player's piece.
 	get isEven() {
-		return this._board.isFull;
+		return this._board.isFull && this.hasNoWinner;
 	}
 
 	//Tells if a given box is empty.
@@ -37,8 +41,7 @@ class Game {
 	//Assigns te requested empty box to the current player.
 	playAt(row, col) {
 		if (!this.isEmpty(row, col)) {
-			throw "The board is not empty at " + row + ", column " + col + "!" +
-				"Please play at a free position."
+			throw "The selected box is not free, please try again.";
 		}
 		this._board.set(row, col, this.currentPlayer.name);
 	}

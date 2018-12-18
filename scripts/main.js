@@ -2,16 +2,16 @@ let game = new Game();
 
 //Assigns the given box to the current player of the game.
 function writePlayerTo(box) {
-		let boxPos = box.data('pos');
-		game.playAt(boxPos.row, boxPos.col);
+	let boxPos = box.data('pos');
+	game.playAt(boxPos.row, boxPos.col);
 }
 
 //Makes the current player play and passes to the next player if the current
 //round is not over.
 function makeAMove(box) {
 	if (!game.isOver()) {
-		writePlayerTo(box);	
-		showMove(box, game.currentPlayer);	
+		writePlayerTo(box);
+		showMove(box, game.currentPlayer);
 		game.nextPlayer();
 	}
 	showCurrentPlayer();
@@ -33,14 +33,20 @@ function endRound() {
 function startNewRound() {
 	clearBoard();
 	game.start();
-	$('td').click(function() {makeAMove($(this));});
+	$('td').click(function () {
+		makeAMove($(this));
+	});
 	$('#replay').remove();
 	showCurrentPlayer();
 }
 
-$('document').ready(function() {
+$('document').ready(function () {
 	showCurrentPlayer();
-	$('td').click(function() {
-		makeAMove($(this));
+	$('td').click(function () {
+		try {
+			makeAMove($(this));
+		} catch (e) {
+			alert(e);
+		}
 	});
 });
