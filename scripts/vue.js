@@ -29,7 +29,6 @@ function showScores() {
 
 //Clears the board from all the player.
 function clearBoard() {
-	game.clearBoard();
 	for (let i = 0; i < $('#board tr').length; i++) {
 		for (let j = 0; j < $('#board td').length; j++) {
 			$('#board tr').eq(i).children().eq(j).text(' ');
