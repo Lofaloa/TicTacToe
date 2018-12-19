@@ -17,7 +17,7 @@ function showIcon(box) {
 
 //Shows a replay button.
 function showReplayButton() {
-	$('body').append('<button id="replay">New round</button>');
+	$('.control').append('<button id="replay">New round</button>');
 	$('#replay').click(startNewRound);
 }
 

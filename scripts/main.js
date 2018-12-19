@@ -34,7 +34,11 @@ function startNewRound() {
 	clearBoard();
 	game.start();
 	$('td').click(function () {
-		makeAMove($(this));
+		try {
+			makeAMove($(this));
+		} catch (e) {
+			alert(e);
+		}
 	});
 	$('#replay').remove();
 	showCurrentPlayer();
@@ -42,11 +46,8 @@ function startNewRound() {
 
 $('document').ready(function () {
 	showCurrentPlayer();
-	$('td').click(function () {
-		try {
-			makeAMove($(this));
-		} catch (e) {
-			alert(e);
-		}
+	$('#start').click(function () {
+		startNewRound();
+		$('#start').remove();
 	});
 });

@@ -4,7 +4,8 @@
   <head>
     <title>Tic Tac Toe</title>
     <meta charset="utf-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./style/style.css">
 		<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
   </head>
@@ -35,7 +36,14 @@
 				<td id="bottomMiddle" data-pos='{"row": 2, "col": 1}'></td>
 				<td id="bottomRight" data-pos='{"row": 2, "col": 2}'></td>
 			</tr>
-    </table>
+		</table>
+		<div class="options">
+			<i class="far fa-lightbulb"></i>
+			<i class="fas fa-robot"></i>
+		</div>
+		<div class="control">
+			<button id="start">Start</button>
+		</div>
 		<script src="./scripts/Player.js"></script>
 		<script src="scripts/Board.js"></script>
     <script src="./scripts/Game.js"></script>
