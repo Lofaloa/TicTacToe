@@ -1,23 +1,28 @@
+let isNightMode = false;
+
 //Shows the current player in the given box.
 function showMove(box, player) {
-	showIcon(box);
-	if (game.hasWon(player)) console.log(player.name + ' wins the round.');
-	if (game.isEven) console.log('The two players are even.');
+	if ($("body").hasClass("night")) {
+		showIcon(box, "night");
+	} else {
+		showIcon(box, "day");
+	}
+
 }
 
 //Shows the icon corresponding to the player.
-function showIcon(box) {
-	let posBox = $(box).data('pos');
+function showIcon(box, theme) {
+	let posBox = box.data('pos');
 	if (game.board[posBox.row][posBox.col] == 'X') {
-		$(box).html("<img src='./images/cross.png' width='50'>");
-	} else {
-		$(box).html("<img src='./images/circle.jpg' width='50'>");
+		$(box).html(`<img src='./images/${theme}/cross.png' width='50'>`);
+	} else if (game.board[posBox.row][posBox.col] == 'O') {
+		$(box).html(`<img src='./images/${theme}/circle.png' width='50'>`);
 	}
 }
 
 //Shows a replay button.
 function showReplayButton() {
-	$('.control').append('<button id="replay">New round</button>');
+	$('body').append('<button id="replay">New round</button>');
 	$('#replay').click(startNewRound);
 }
 
@@ -39,10 +44,47 @@ function clearBoard() {
 //Shows the current player.
 function showCurrentPlayer() {
 	if (game.currentPlayer.isX()) {
-		$("#circleHeader").parent().css("border", "1px solid black");
-		$("#crossHeader").parent().css("border", "3px solid black");
+		$("#circleHeader").parent().css("border", "1px solid var(--border_color)");
+		$("#crossHeader").parent().css("border", "3px solid var(--border_color)");
 	} else {
-		$("#crossHeader").parent().css("border", "1px solid black");
-		$("#circleHeader").parent().css("border", "3px solid black");
+		$("#crossHeader").parent().css("border", "1px solid var(--border_color)");
+		$("#circleHeader").parent().css("border", "3px solid var(--border_color)");
 	}
+}
+
+function showHeaderIcons(theme) {
+	if (theme != "day" && theme != "night") {
+		throw theme + " is not a valid theme, it should be either night or day";
+	}
+	$("#crossHeader").attr("src", `./images/${theme}/cross.png`);
+	$("#circleHeader").attr("src", `./images/${theme}/circle.png`);
+}
+
+function updateIcons(theme) {
+	if (theme != "day" && theme != "night") {
+		throw theme + " is not a valid theme, it should be either night or day";
+	}
+	for (let table_row = 1; table_row <= 3; table_row++) {
+		let current_row = $("table tr").eq(table_row);
+		for (let data_row = 0; data_row < 3; data_row++) {
+			let current_box = current_row.find("td").eq(data_row);
+			showIcon(current_box, theme);
+		}
+	}
+}
+
+//Toggles the theme. It can be either black on with (night) or white n clock (day)
+function toggleTheme() {
+	if ($("body").hasClass("night")) {
+		showHeaderIcons("day");		
+		updateIcons("day");
+		$("#theme_control").attr("title", "Click for night theme");
+		$("#theme_control").attr("class", "far fa-moon");
+	} else {
+		showHeaderIcons("night");
+		updateIcons("night");
+		$("#theme_control").attr("title", "Click for day theme");
+		$("#theme_control").attr("class", "far fa-sun");
+	}
+	$("body").toggleClass("night");
 }

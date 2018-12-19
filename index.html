@@ -14,10 +14,10 @@
     <h1>Tic Tac Toe</h1>
     <table id="score">
 			<tr>
-				<td><img id="crossHeader" src="./images/cross.png"></td>
+				<td><img id="crossHeader" src="./images/day/cross.png"></td>
 				<td><span id="scoreX">0</span></td>
 				<td><span id="scoreO">0</span></td>
-				<td><img id="circleHeader" src="./images/circle.jpg"</td>
+				<td><img id="circleHeader" src="./images/day/circle.png"</td>
 			</tr>
 		</table>
     <table id="board">
@@ -38,12 +38,9 @@
 			</tr>
 		</table>
 		<div class="options">
-			<i class="far fa-lightbulb"></i>
-			<i class="fas fa-robot"></i>
+			<i title="Click for night theme" id="theme_control" class="far fa-moon"></i>
 		</div>
-		<div class="control">
-			<button id="start">Start</button>
-		</div>
+		<button id="start">Start</button>
 		<script src="./scripts/Player.js"></script>
 		<script src="scripts/Board.js"></script>
     <script src="./scripts/Game.js"></script>

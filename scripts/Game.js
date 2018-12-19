@@ -35,7 +35,6 @@ class Game {
 	//Makes start a new round.
 	start() {
 		this._board.clear();
-		console.log("after clearing: " + this._board.boxes);
 	}
 
 	//Assigns te requested empty box to the current player.

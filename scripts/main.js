@@ -50,4 +50,5 @@ $('document').ready(function () {
 		startNewRound();
 		$('#start').remove();
 	});
+	$("#theme_control").click(toggleTheme);
 });

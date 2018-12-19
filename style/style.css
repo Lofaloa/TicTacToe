@@ -1,13 +1,27 @@
-:root {
-	--background_color: white;
-	--button_background_color: black;
+body {
+	--button_background: white;
+	--button_background_hover: black;
 	--border_color: black;
 	--font_color: black;
+	--font_color_hover: white;
+	background-color: white;
+	color: black;
+}
+
+body.night {
+	--button_background: white;
+	--button_background_hover: black;
+	--border_color: white;
+	--font_color: white;
+	--font_color_hover: black;
+	background-color: black;
+	color: white;
 }
 
 h1 {
 	text-align: center;
 	font-family: 'Acme', sans-serif;
+	color: var(--font_color);
 }
 
 #score {
@@ -48,47 +62,31 @@ table {
 	width: 10%;
 }
 
-.control {
-	display: flex;
-	align-items: center;
-    justify-content: center;
-	margin: 0 auto;
-	width: 20%;
+#theme_control {
+	font-size: 1.2em;
+	margin-top: 10px;
 }
 
 button {
+	position: relative;
+	left: 50%;
+	padding: 1em;
+	transform: translateX(-50%);
 	margin-top: 10px;
 	padding: 1em;
 	color: var(--font_color);
-	background: transparent;
+	background-color: var(--button_background);
 	border: 2px solid var(--border_color);
 }
 
 button:hover {
+	position: relative;
+	left: 50%;
+	padding: 1em;
+	transform: translateX(-50%);
 	margin-top: 10px;
 	padding: 1em;
-	color: white;
-	background: black;
+	color: var(--font_color_hover);
+	background: var(--button_background_hover);
 	border: 2px solid var(--border_color);
-}
-
-#replay {
-	position: relative;
-	left: 50%;
-	padding: 1em;
-	transform: translateX(-50%);
-	color: var(--button_background_color);
-	background: transparent;
-	border: 2px solid black;
-}
-
-#replay:hover {
-	position: relative;
-	left: 50%;
-	padding: 1em;
-	transform: translateX(-50%);
-	color: white;
-	background: black;
-	border: 2px solid black;
-
 }
