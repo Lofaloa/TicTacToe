@@ -9,8 +9,8 @@ body {
 }
 
 body.night {
-	--button_background: white;
-	--button_background_hover: black;
+	--button_background: black;
+	--button_background_hover: white;
 	--border_color: white;
 	--font_color: white;
 	--font_color_hover: black;
