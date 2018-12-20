@@ -1,4 +1,4 @@
-let isNightMode = false;
+let timer;
 
 //Shows the current player in the given box.
 function showMove(box, player) {
@@ -76,7 +76,7 @@ function updateIcons(theme) {
 //Toggles the theme. It can be either black on with (night) or white n clock (day)
 function toggleTheme() {
 	if ($("body").hasClass("night")) {
-		showHeaderIcons("day");		
+		showHeaderIcons("day");
 		updateIcons("day");
 		$("#theme_control").attr("title", "Click for night theme");
 		$("#theme_control").attr("class", "far fa-moon");
@@ -87,4 +87,17 @@ function toggleTheme() {
 		$("#theme_control").attr("class", "far fa-sun");
 	}
 	$("body").toggleClass("night");
+}
+
+function showTimer() {
+	$("body").append("<div id=\"timer\">" +
+		"<span id=\"minutes\">00</span>:<span id=\"seconds\">00</span>" +
+		"</div>");
+	timer = new Timer();
+	timer.start();
+}
+
+function removeTimer() {
+	timer.stop();
+	$("#timer").remove();
 }

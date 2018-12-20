@@ -24,6 +24,7 @@ function endRound() {
 	if (game.isOver()) {
 		game.currentPlayer.scoreUp();
 		showScores();
+		removeTimer();
 		showReplayButton();
 		$('td').off("click");
 	}
@@ -32,6 +33,7 @@ function endRound() {
 //Starts a new round. 
 function startNewRound() {
 	clearBoard();
+	showTimer();
 	game.start();
 	$('td').click(function () {
 		try {
