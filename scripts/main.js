@@ -1,4 +1,5 @@
 let game = new Game();
+let view = new View(game);
 
 //Assigns the given box to the current player of the game.
 function writePlayerTo(box) {
@@ -11,10 +12,10 @@ function writePlayerTo(box) {
 function makeAMove(box) {
 	if (!game.isOver()) {
 		writePlayerTo(box);
-		showMove(box, game.currentPlayer);
+		view.showMove(box, game.currentPlayer);
 		game.nextPlayer();
 	}
-	showCurrentPlayer();
+	view.showCurrentPlayer();
 	endRound();
 }
 
@@ -23,17 +24,17 @@ function makeAMove(box) {
 function endRound() {
 	if (game.isOver()) {
 		game.currentPlayer.scoreUp();
-		showScores();
-		removeTimer();
-		showReplayButton();
+		view.showScores();
+		view.removeTimer();
+		view.showReplayButton();
 		$('td').off("click");
 	}
 }
 
 //Starts a new round. 
 function startNewRound() {
-	clearBoard();
-	showTimer();
+	view.clearBoard();
+	view.showTimer();
 	game.start();
 	$('td').click(function () {
 		try {
@@ -43,14 +44,15 @@ function startNewRound() {
 		}
 	});
 	$('#replay').remove();
-	showCurrentPlayer();
+	view.showCurrentPlayer();
 }
 
 $('document').ready(function () {
-	showCurrentPlayer();
+	view.showCurrentPlayer();
 	$('#start').click(function () {
+		console.log("start clicked!");
 		startNewRound();
 		$('#start').remove();
 	});
-	$("#theme_control").click(toggleTheme);
+	$("#theme_control").click(function() {view.toggleTheme()});
 });

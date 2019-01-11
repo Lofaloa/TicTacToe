@@ -90,3 +90,14 @@ button:hover {
 	background: var(--button_background_hover);
 	border: 2px solid var(--border_color);
 }
+
+#timer {
+	margin: 0 auto;
+	padding-top: 10px;
+	display: flex;
+	align-items: center;
+    justify-content: center;
+	color: var(--font_color);
+	font-family: 'Acme', sans-serif;
+	font-size: 1.2em;
+}

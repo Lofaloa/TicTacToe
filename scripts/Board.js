@@ -1,5 +1,6 @@
 class Board {
 
+    //Constructs an empty board.
     constructor() {
         this._boxes = [
             [' ', ' ', ' '],
@@ -8,11 +9,12 @@ class Board {
         ];
     }
 
+    //Gets this board boxes.
     get boxes() {
         return this._boxes;
     }
 
-    //Tells if this board is filled with player pieces.
+    //Tells if this board is full. It is when all boxes contain a player piece.
     get isFull() {
         let i = 0;
         while (i < this._boxes.length && !this._boxes[i].includes(' ')) {
@@ -21,7 +23,8 @@ class Board {
         return i == this._boxes.length;
     }
 
-    //Throws an exception if the given position is not valid.
+    //Throws an exception if the given position is not valid. A position is 
+    //valid if it is in this board bounds.
     requireValidPosition(row, column) {
         if (row < 0 || 3 - 1 < row) throw row + " is not a valid row, it" +
             "should be between 0 and 2";
@@ -43,7 +46,7 @@ class Board {
         this._boxes[row][col] = value;
     }
 
-    //Clears this board.
+    //Clears this board. All player pieces are erased from this board.
     clear() {
         this.setAllArrayTo(this._boxes, ' ');
     };

@@ -32,6 +32,10 @@ class Game {
 		return this._board.isEmptyAt(row, col);
 	}
 
+	isPlayerAt(player, row, col) {
+		return this.board[row][col] == player;
+	}
+
 	//Makes start a new round.
 	start() {
 		this._board.clear();
@@ -60,8 +64,9 @@ class Game {
 			this._board.hasDiagonalOf(player.name);
 	}
 
-	//Tells if a round of the game is over. It is over if the currentPlayer won
-	// or if the board is full.	A game can hold an unlimited number of rounds.
+	//Tells if a round of the game is over. It is over if the current player 
+	//won or if the board is full. A game can hold an unlimited number of 
+	//rounds.
 	isOver() {
 		return this.hasWon(this.currentPlayer) || this.isEven;
 	}
