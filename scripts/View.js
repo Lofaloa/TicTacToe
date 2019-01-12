@@ -5,17 +5,25 @@ class View {
         this._timer;
     }
 
-    //Initializes this view.
-    initialize() {
-        
+    static get NIGHT_THEME() {
+        return "night";
+    }
+
+    static get DAY_THEME() {
+        return "day";
+    }
+
+    //Tells if this view is in night theme.
+    get isNightTheme() {
+        return $("body").hasClass(View.NIGHT_THEME);
     }
 
     //Shows the current player in the given box.
-    showMove(box, player) {
-        if ($("body").hasClass("night")) {
-            this.showIcon(box, "night");
+    showMove(box) {
+        if (this.isNightTheme) {
+            this.showIcon(box, View.NIGHT_THEME);
         } else {
-            this.showIcon(box, "day");
+            this.showIcon(box, View.DAY_THEME);
         }
     }
 
@@ -62,7 +70,7 @@ class View {
     }
 
     showHeaderIcons(theme) {
-        if (theme != "day" && theme != "night") {
+        if (theme != View.NIGHT_THEME && theme != View.DAY_THEME) {
             throw theme + " is not a valid theme, it should be either night or day";
         }
         $("#crossHeader").attr("src", `./images/${theme}/cross.png`);
@@ -70,7 +78,7 @@ class View {
     }
 
     updateIcons(theme) {
-        if (theme != "day" && theme != "night") {
+        if (theme != View.NIGHT_THEME && theme != View.DAY_THEME) {
             throw theme + " is not a valid theme, it should be either night or day";
         }
         for (let table_row = 1; table_row <= 3; table_row++) {
@@ -84,7 +92,7 @@ class View {
 
     //Toggles the theme. It can be either black on with (night) or white on black (day)
     toggleTheme() {
-        if ($("body").hasClass("night")) {
+        if (this.isNightTheme) {
             this.showHeaderIcons("day");
             this.updateIcons("day");
             $("#theme_control").attr("title", "Click for night theme");
