@@ -9,6 +9,10 @@ class Board {
         ];
     }
 
+    static get SIZE() {
+        return 3;
+    }
+
     //Gets this board boxes.
     get boxes() {
         return this._boxes;

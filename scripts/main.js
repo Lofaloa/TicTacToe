@@ -8,11 +8,11 @@ function startNewRound() {
 	view.showTimer();
 	game.start();
 	$('td').click(function() {
-		
 		try {
 			controller.makeAMove($(this));
 		} catch (e) {
 			alert(e);
+			console.log(e);
 		}
 	});
 	$('#replay').remove();
@@ -25,5 +25,7 @@ $('document').ready(function () {
 		startNewRound();
 		$('#start').remove();
 	});
-	$("#theme_control").click(function() {view.toggleTheme()});
+	$("#theme_control").click(function() {
+		view.toggleTheme();
+	});
 });

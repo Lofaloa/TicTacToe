@@ -24,10 +24,13 @@ class Controller {
     makeAMove(box) {
         if (!this.game.isOver()) {
             this.writePlayerTo(box);
-            this.view.showMove(box);
             this.game.nextPlayer();
+            if (this.game.currentPlayer.isAI) {
+                this.game.currentPlayer.play();
+                this.game.nextPlayer();
+            }
         }
-        this.view.showCurrentPlayer();
+        this.view.update();
         this.endRound();
     }
 
@@ -35,7 +38,7 @@ class Controller {
     //no player get a point, the replay button is also displayed.
     endRound() {
         if (this.game.isOver()) {
-            this.game.currentPlayer.scoreUp();
+            if (!game.isEven) this.game.currentPlayer.scoreUp();
             this.view.showScores();
             this.view.removeTimer();
             this.view.showReplayButton();

@@ -3,7 +3,7 @@ class Game {
 	//player is initially X.
 	constructor() {
 		this._board = new Board();
-		this._players = [new Player('X'), new Player('O')];
+		this._players = [new Player('X'), new Player('O', new DummyStrategy(this))];
 		this._currentPlayer = 0;
 	}
 
@@ -17,14 +17,15 @@ class Game {
 		return this._players[this._currentPlayer];
 	}
 
-	get hasNoWinner() {
-		return !this.hasWon(this._players[0]) || !this.hasWon(this._players[1]);
+	// true if one of the two players has won the game.
+	get hasWinner() {
+		return this.hasWon(this._players[0]) || this.hasWon(this._players[1]);
 	}
 
 	//Tells if the two players are even. They're even when the board is totally
 	//full of player's piece.
 	get isEven() {
-		return this._board.isFull && this.hasNoWinner;
+		return this._board.isFull && !this.hasWinner;
 	}
 
 	//Tells if a given box is empty.

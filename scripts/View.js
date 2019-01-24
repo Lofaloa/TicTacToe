@@ -3,6 +3,7 @@ class View {
     constructor(game) {
         this._game = game;
         this._timer;
+        this._theme = View.DAY_THEME;
     }
 
     static get NIGHT_THEME() {
@@ -13,28 +14,59 @@ class View {
         return "day";
     }
 
-    //Tells if this view is in night theme.
-    get isNightTheme() {
-        return $("body").hasClass(View.NIGHT_THEME);
+    setNightTheme() {
+        this._theme = View.NIGHT_THEME;
     }
 
-    //Shows the current player in the given box.
-    showMove(box) {
-        if (this.isNightTheme) {
-            this.showIcon(box, View.NIGHT_THEME);
+    setDayTheme() {
+        this._theme = View.DAY_THEME;
+    }
+
+    toggleTheme() {
+        if (this._theme == View.DAY_THEME) {
+            this.setNightTheme();
         } else {
-            this.showIcon(box, View.DAY_THEME);
+            this.setDayTheme();
         }
+        this.updateTheme();
+    }
+
+    //Tells if this view is in night theme.
+    get isNightTheme() {
+        return this._theme == View.NIGHT_THEME;
     }
 
     //Shows the icon corresponding to the player.
-    showIcon(box, theme) {
+    showIcon(box) {
         let posBox = box.data('pos');
         if (game.isPlayerAt('X', posBox.row, posBox.col)) {
-            $(box).html(`<img src='./images/${theme}/cross.png' width='50'>`);
+            $(box).html(`<img src='./images/${this._theme}/cross.png' width='50'>`);
         } else if (game.isPlayerAt('O', posBox.row, posBox.col)) {
-            $(box).html(`<img src='./images/${theme}/circle.png' width='50'>`);
+            $(box).html(`<img src='./images/${this._theme}/circle.png' width='50'>`);
         }
+    }
+
+    updateIcons() {
+        for (let table_row = 1; table_row <= 3; table_row++) {
+            let current_row = $("table tr").eq(table_row);
+            for (let data_row = 0; data_row < 3; data_row++) {
+                let current_box = current_row.find("td").eq(data_row);
+                this.showIcon(current_box);
+            }
+        }
+    }
+
+    //Toggles the theme. It can be either black on with (night) or white on black (day)
+    updateTheme() {
+        if (this.isNightTheme) {
+            $("#theme_control").attr("title", `Click for day theme`);
+            $("#theme_control").attr("class", "far fa-sun");
+        } else {
+            $("#theme_control").attr("title", "Click for night theme");
+            $("#theme_control").attr("class", "far fa-moon");
+        }
+        $("body").attr("class", this._theme);
+        this.update();
     }
 
     //Shows a replay button.
@@ -69,43 +101,10 @@ class View {
         }
     }
 
-    showHeaderIcons(theme) {
-        if (theme != View.NIGHT_THEME && theme != View.DAY_THEME) {
-            throw theme + " is not a valid theme, it should be either night or day";
-        }
-        $("#crossHeader").attr("src", `./images/${theme}/cross.png`);
-        $("#circleHeader").attr("src", `./images/${theme}/circle.png`);
+    showHeaderIcons() {
+        $("#crossHeader").attr("src", `./images/${this._theme}/cross.png`);
+        $("#circleHeader").attr("src", `./images/${this._theme}/circle.png`);
     }
-
-    updateIcons(theme) {
-        if (theme != View.NIGHT_THEME && theme != View.DAY_THEME) {
-            throw theme + " is not a valid theme, it should be either night or day";
-        }
-        for (let table_row = 1; table_row <= 3; table_row++) {
-            let current_row = $("table tr").eq(table_row);
-            for (let data_row = 0; data_row < 3; data_row++) {
-                let current_box = current_row.find("td").eq(data_row);
-                this.showIcon(current_box, theme);
-            }
-        }
-    }
-
-    //Toggles the theme. It can be either black on with (night) or white on black (day)
-    toggleTheme() {
-        if (this.isNightTheme) {
-            this.showHeaderIcons("day");
-            this.updateIcons("day");
-            $("#theme_control").attr("title", "Click for night theme");
-            $("#theme_control").attr("class", "far fa-moon");
-        } else {
-            this.showHeaderIcons("night");
-            this.updateIcons("night");
-            $("#theme_control").attr("title", "Click for day theme");
-            $("#theme_control").attr("class", "far fa-sun");
-        }
-        $("body").toggleClass("night");
-    }
-
     //Shows the timer.
     showTimer() {
         $("body").append("<div id=\"timer\">" +
@@ -119,6 +118,12 @@ class View {
     removeTimer() {
         this._timer.stop();
         $("#timer").remove();
+    }
+
+    update() {
+        this.updateIcons("day");
+        this.showCurrentPlayer();
+        this.showHeaderIcons();
     }
 
 }
