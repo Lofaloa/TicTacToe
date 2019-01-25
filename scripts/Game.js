@@ -3,7 +3,7 @@ class Game {
 	//player is initially X.
 	constructor() {
 		this._board = new Board();
-		this._players = [new Player('X'), new Player('O', new UnbeatableStrategy(this))];
+		this._players = [new Player('X'), new Player('O')];
 		this._currentPlayer = 0;
 	}
 
@@ -28,6 +28,11 @@ class Game {
 		return this._board.isFull && !this.hasWinner;
 	}
 
+	set ai_player(value) {
+		game._players[value].strategy = new RandomStrategy(game);
+		this._currentPlayer = 1 - value;
+	}
+
 	//Tells if a given box is empty.
 	isEmpty(row, col) {
 		return this._board.isEmptyAt(row, col);
@@ -37,8 +42,14 @@ class Game {
 		return this.board[row][col] == player;
 	}
 
-	//Makes start a new round.
 	start() {
+		this._board.clear();
+		this._players[0].resetScore();
+		this._players[1].resetScore();
+	}
+
+	//Makes start a new round.
+	start_round() {
 		this._board.clear();
 	}
 

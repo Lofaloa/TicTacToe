@@ -69,9 +69,7 @@ table {
 
 button {
 	position: relative;
-	left: 50%;
 	padding: 0.5em;
-	transform: translateX(-50%);
 	margin-top: 10px;
 	color: var(--font_color);
 	background-color: var(--button_background);
@@ -82,9 +80,7 @@ button {
 
 button:hover {
 	position: relative;
-	left: 50%;
 	padding: 0.5em;
-	transform: translateX(-50%);
 	margin-top: 10px;
 	color: var(--font_color_hover);
 	background: var(--button_background_hover);
@@ -104,12 +100,43 @@ button:hover {
 	font-size: 1.2em;
 }
 
-#popup {
+.popup {
 	position: relative;
 	bottom: 325px;
-	height: 150px;
-	width: 375px;
+	width: 25%;
 	background-color: white;
 	border: 5px solid black;
 	margin: 0 auto;
+	padding: 10px;
+	text-align: center;
+	font-family: 'Acme', sans-serif;
+}
+
+#start_menu #start_title {
+	font-size: 1.2em;	
+}
+
+#start_menu #start_subtitle {
+	font-size: 1em;
+}
+
+#choose {
+	margin: 10px;
+	display: flex;
+	justify-content: space-around;
+}
+
+#start_menu img {
+	height: 75px;
+	transition: all .1s ease-in-out;
+}
+
+#start_menu img:hover {
+	transform: scale(1.1);
+}
+
+#options {
+	margin: 10px;
+	display: flex;
+	justify-content: space-around;
 }

@@ -127,11 +127,43 @@ class View {
     }
 
     showStartMenu() {
-        $('body').append("<div id='popup'><button id='start'>Start</button></div>");
+        let div_id = "start_menu";
+        let title = "Welcome to Tic Tac Toe!";
+        let subtitle = "Choose your side!";
+        let cross_src = `./images/${this._theme}/cross.png`; 
+        let circle_src = `./images/${this._theme}/circle.png`;
+        $('body').append(`<div class="popup" id=${div_id}></div>`);
+        $(`#${div_id}`).append(`<span id="start_title">${title}</span></br>`);
+        $(`#${div_id}`).append(`<span id="start_subtitle">${subtitle}</span>`);
+        $(`#${div_id}`).append("<div id='choose'></div>")
+        $('#choose').append(`<img src=${cross_src} id="choose_cross"></img>`);
+        $('#choose').append(`<img src=${circle_src} id="choose_circle"></img>`);
+        $('h1, table, #theme_control').css("filter", "blur(5px)");
     }
 
     removeStartMenu() {
-        $('#popup').remove();
+        $('h1, table, #theme_control').css("filter", "blur(0px)");
+        $('#start_menu').remove();
+    }
+
+    showReplayMenu() {
+        let div_id = "replay_menu";
+        let title = "Well done!";
+        let subtitle = "Do you want to replay?";
+        $('body').append(`<div class="popup" id=${div_id}></div>`);
+        $(`#${div_id}`).append(`<span id="replay_title">${title}</span></br>`);
+        $(`#${div_id}`).append(`<span id="replay_subtitle">${subtitle}</span>`);
+        $(`#${div_id}`).append("<div id='options'></div>")
+        $('#options').append(`<button id="replay">New round</button>`);
+        $('#options').append(`<button id="quit">Quit</button>`);
+        $('h1, table, #theme_control').css("filter", "blur(5px)");
+        $('#replay').click(startNewRound);
+        $('#quit').click(reset);
+    }
+
+    removeReplayMenu() {
+        $('h1, table, #theme_control').css("filter", "blur(0px)");
+        $('#replay_menu').remove();
     }
 
 }

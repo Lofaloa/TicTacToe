@@ -41,7 +41,7 @@ class Controller {
             if (!game.isEven) this.game.currentPlayer.scoreUp();
             this.view.showScores();
             this.view.removeTimer();
-            this.view.showReplayButton();
+            this.view.showReplayMenu();
             $('td').off("click");
         }
     }

@@ -27,6 +27,11 @@ class Player {
         this._strategy = value; 
     }
 
+    // sets this player score to 0.
+    resetScore() {
+        this._score = 0;
+    }
+
     //Adds a point to this player.
     scoreUp() {
         this._score++;

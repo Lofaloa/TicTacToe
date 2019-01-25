@@ -6,7 +6,7 @@ let controller = new Controller(game, view);
 function startNewRound() {
 	view.clearBoard();
 	view.showTimer();
-	game.start();
+	game.start_round();
 	$('td').click(function() {
 		try {
 			controller.makeAMove($(this));
@@ -15,19 +15,51 @@ function startNewRound() {
 			console.log(e);
 		}
 	});
-	$('#replay').remove();
+	view.removeReplayMenu();
 	view.showCurrentPlayer();
+}
+
+function reset() {
+	game.start();
+	view.removeReplayMenu();
+	view.showCurrentPlayer();
+	view.showStartMenu();
+	view.showScores();
+	$('#choose_cross').click(function() {
+		game.ai_player = 1;
+		startNewRound();
+		view.removeStartMenu();
+		$("#theme_control").click(function() {
+			view.toggleTheme();
+		});
+	});
+	$('#choose_circle').click(function() {
+		game.ai_player = 0;
+		startNewRound();
+		view.removeStartMenu();
+		$("#theme_control").click(function() {
+			view.toggleTheme();
+		});
+	});
 }
 
 $('document').ready(function () {
 	view.showCurrentPlayer();
 	view.showStartMenu();
-	$('#start').click(function () {
+	$('#choose_cross').click(function() {
+		game.ai_player = 1;
 		startNewRound();
-		$('#start').remove();
 		view.removeStartMenu();
+		$("#theme_control").click(function() {
+			view.toggleTheme();
+		});
 	});
-	$("#theme_control").click(function() {
-		view.toggleTheme();
+	$('#choose_circle').click(function() {
+		game.ai_player = 0;
+		startNewRound();
+		view.removeStartMenu();
+		$("#theme_control").click(function() {
+			view.toggleTheme();
+		});
 	});
 });
