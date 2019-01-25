@@ -1,7 +1,7 @@
 class Board {
 
     //Constructs an empty board.
-    constructor() {
+    constructor(board) {
         this._boxes = [
             [' ', ' ', ' '],
             [' ', ' ', ' '],
@@ -114,6 +114,12 @@ class Board {
         return this.hasDescendingDiagonalOf(value) || this.hasRisingDiagonalOf(value);
     }
 
+    hasAWinningComboFor(player) {
+        return this.hasRowOf(player) ||
+            this.hasColumnOf(player) ||
+            this.hasDiagonalOf(player);
+    }
+
     //Sets all the cells of a two dimensional array to the same value.
     setAllArrayTo(arr, value) {
         for (let i = 0; i < arr.length; i++) {
@@ -121,6 +127,16 @@ class Board {
                 arr[i][j] = value;
             }
         }
+    }
+
+    clone() {
+        let newBoard = new Board();
+        for (let row = 0; row < Board.SIZE; ++row) {
+            for (let column = 0; column < Board.SIZE; ++column) {
+                newBoard.boxes[row][column] = this.boxes[row][column];
+            }
+        }
+        return newBoard;
     }
 
 }

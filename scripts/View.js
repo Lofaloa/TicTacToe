@@ -126,4 +126,12 @@ class View {
         this.showHeaderIcons();
     }
 
+    showStartMenu() {
+        $('body').append("<div id='popup'><button id='start'>Start</button></div>");
+    }
+
+    removeStartMenu() {
+        $('#popup').remove();
+    }
+
 }

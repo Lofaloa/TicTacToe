@@ -70,25 +70,27 @@ table {
 button {
 	position: relative;
 	left: 50%;
-	padding: 1em;
+	padding: 0.5em;
 	transform: translateX(-50%);
 	margin-top: 10px;
-	padding: 1em;
 	color: var(--font_color);
 	background-color: var(--button_background);
 	border: 2px solid var(--border_color);
+	font-family: 'Acme', sans-serif;
+	font-size: 1.1em;
 }
 
 button:hover {
 	position: relative;
 	left: 50%;
-	padding: 1em;
+	padding: 0.5em;
 	transform: translateX(-50%);
 	margin-top: 10px;
-	padding: 1em;
 	color: var(--font_color_hover);
 	background: var(--button_background_hover);
 	border: 2px solid var(--border_color);
+	font-family: 'Acme', sans-serif;
+	font-size: 1.1em;
 }
 
 #timer {
@@ -100,4 +102,14 @@ button:hover {
 	color: var(--font_color);
 	font-family: 'Acme', sans-serif;
 	font-size: 1.2em;
+}
+
+#popup {
+	position: relative;
+	bottom: 325px;
+	height: 150px;
+	width: 375px;
+	background-color: white;
+	border: 5px solid black;
+	margin: 0 auto;
 }

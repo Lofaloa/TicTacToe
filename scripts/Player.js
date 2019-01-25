@@ -23,6 +23,10 @@ class Player {
         return this._score;
     }
 
+    set strategy(value) {
+        this._strategy = value; 
+    }
+
     //Adds a point to this player.
     scoreUp() {
         this._score++;

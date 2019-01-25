@@ -21,9 +21,11 @@ function startNewRound() {
 
 $('document').ready(function () {
 	view.showCurrentPlayer();
+	view.showStartMenu();
 	$('#start').click(function () {
 		startNewRound();
 		$('#start').remove();
+		view.removeStartMenu();
 	});
 	$("#theme_control").click(function() {
 		view.toggleTheme();

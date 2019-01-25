@@ -3,7 +3,7 @@ class Game {
 	//player is initially X.
 	constructor() {
 		this._board = new Board();
-		this._players = [new Player('X'), new Player('O', new DummyStrategy(this))];
+		this._players = [new Player('X'), new Player('O', new UnbeatableStrategy(this))];
 		this._currentPlayer = 0;
 	}
 
@@ -60,9 +60,7 @@ class Game {
 	//Tells if the given player has won. A player wins by taking a row, a column
 	//or a diagonal of the board.
 	hasWon(player) {
-		return this._board.hasRowOf(player.name) ||
-			this._board.hasColumnOf(player.name) ||
-			this._board.hasDiagonalOf(player.name);
+		return this._board.hasAWinningComboFor(player.name);
 	}
 
 	//Tells if a round of the game is over. It is over if the current player 
