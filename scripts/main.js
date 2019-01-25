@@ -29,17 +29,11 @@ function reset() {
 		game.ai_player = 1;
 		startNewRound();
 		view.removeStartMenu();
-		$("#theme_control").click(function() {
-			view.toggleTheme();
-		});
 	});
 	$('#choose_circle').click(function() {
 		game.ai_player = 0;
 		startNewRound();
 		view.removeStartMenu();
-		$("#theme_control").click(function() {
-			view.toggleTheme();
-		});
 	});
 }
 

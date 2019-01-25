@@ -1,6 +1,7 @@
 body {
 	--button_background: white;
 	--button_background_hover: black;
+	--background_color: white;
 	--border_color: black;
 	--font_color: black;
 	--font_color_hover: white;
@@ -11,6 +12,7 @@ body {
 body.night {
 	--button_background: black;
 	--button_background_hover: white;
+	--background_color: black;
 	--border_color: white;
 	--font_color: white;
 	--font_color_hover: black;
@@ -104,12 +106,13 @@ button:hover {
 	position: relative;
 	bottom: 325px;
 	width: 25%;
-	background-color: white;
-	border: 5px solid black;
+	background-color: var(--background_color);
+	border: 5px solid var(--border_color);
 	margin: 0 auto;
 	padding: 10px;
 	text-align: center;
 	font-family: 'Acme', sans-serif;
+	color: var(--font_color);
 }
 
 #start_menu #start_title {
