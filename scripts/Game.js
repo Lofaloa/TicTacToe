@@ -28,8 +28,16 @@ class Game {
 		return this._board.isFull && !this.hasWinner;
 	}
 
+	get ai_player() {
+		if (this._players[0].isAI) {
+			return this._players[0];
+		} else {
+			return this._players[1];
+		}
+	}
+
 	set ai_player(value) {
-		game._players[value].strategy = new RandomStrategy(game);
+		game._players[value].strategy = new UnbeatableStrategy(game);
 		this._currentPlayer = 1 - value;
 	}
 

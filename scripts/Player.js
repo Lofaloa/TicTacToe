@@ -42,6 +42,11 @@ class Player {
         return this.name === 'X';
     }
 
+    //Tells if this player is the X player.
+    isO() {
+        return this.name === 'O';
+    }
+
     play() {
         if (!this.isAI) {
             throw this._name + " has no strategy because he is not an AI."; 

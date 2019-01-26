@@ -48,63 +48,59 @@ class UnbeatableStrategy {
     max_move(board) {
         let positions = this.getAvailableMoves(board);
         if (positions.length == 0) {
-            return this.getEvaluation(board);
+            return {eval: this.getEvaluation(board), pos: null};
         } else {
             let maxEval = Number.NEGATIVE_INFINITY;
+            let maxPos = null;
             for (let i = 0; i < positions.length; ++i) {
                 let newBoard = board.clone();
                 this.apply(newBoard, positions[i], 'O');
-                let evaluation = this.min_move(newBoard);
-                if (evaluation > maxEval) {
-                    maxEval = evaluation;
+                let move = this.min_move(newBoard);
+                this.apply(newBoard, positions[i], ' ');
+                if (move.eval > maxEval) {
+                    maxEval = move.eval;
+                    maxPos = positions[i];
                 }
             }
-            return maxEval;
+            return {eval: maxEval, pos: maxPos};
         }
     }
 
     min_move(board) {
         let positions = this.getAvailableMoves(board);
         if (positions.length == 0) {
-            return this.getEvaluation(board);
+            return {eval: this.getEvaluation(board), pos: null};
         } else {
             let minEval = Number.POSITIVE_INFINITY;
+            let minPos = null;
             for (let i = 0; i < positions.length; ++i) {
                 let newBoard = board.clone();
                 this.apply(newBoard, positions[i], 'X');
-                let evaluation = this.max_move(newBoard);
-                if (evaluation < minEval) {
-                    minEval = evaluation;
+                let move = this.max_move(newBoard);
+                this.apply(newBoard, positions[i], ' ');
+                if (move.eval < minEval) {
+                    minEval = move.eval;
+                    minPos = positions[i];
                 }
             }
-            return minEval;
+            return {eval: minEval, pos: minPos};
         }
     }
 
-    minimax(board) {
-        return this.max_move(board.clone());
-    }
-
-    findBestPosition() {
-        let moves = this.getAvailableMoves(this._game._board);
-        let currentEvaluation;
-        let bestEvaluation = -1;
-        let bestMove = null;
-        for (let i = 0; i < moves.length; ++i) {
-            let newBoard = this._game._board.clone();
-            this.apply(newBoard, moves[i], 'O');
-            let currentEvaluation = this.minimax(newBoard);
-            console.log(currentEvaluation);
-            if (currentEvaluation > bestEvaluation) {
-                bestEvaluation = currentEvaluation;
-                bestMove = moves[i];
-            }
+    minimax(board, ai_player) {
+        if (ai_player.isX()) {
+            console.log("X is the AI.");
+            let move = this.min_move(board.clone());
+            return move;
+        } else {
+            console.log("O is the AI.");
+            let move = this.max_move(board.clone());
+            return move;
         }
-        return bestMove;
     }
 
     execute() {
-        let pos = this.findBestPosition();
+        let pos = this.minimax(this._game._board, this._game.ai_player).pos;
         this._game.playAt(pos.row, pos.column);
     }
 
