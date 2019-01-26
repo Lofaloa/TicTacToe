@@ -19,8 +19,8 @@ class Controller {
         this.game.playAt(boxPos.row, boxPos.col);
     }
 
-    //Makes the current player play and passes to the next player if the current
-    //round is not over.
+    // Makes the current player play and passes to the next player if the current
+    // round is not over.
     makeAMove(box) {
         if (!this.game.isOver()) {
             this.writePlayerTo(box);
@@ -34,8 +34,8 @@ class Controller {
         this.endRound();
     }
 
-    //Gives a point to the winner. Shows a replay button. If the round is even, 
-    //no player get a point, the replay button is also displayed.
+    // Gives a point to the winner. Shows a replay button. If the round is even, 
+    // no player get a point, the replay button is also displayed.
     endRound() {
         if (this.game.isOver()) {
             if (!game.isEven) this.game.currentPlayer.scoreUp();
