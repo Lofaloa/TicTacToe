@@ -56,6 +56,10 @@ table {
 	text-align: center;
 }
 
+.marker {
+	width: 50px;
+}
+
 .options {
 	display: flex;
 	align-items: center;

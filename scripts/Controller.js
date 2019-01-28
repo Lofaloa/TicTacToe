@@ -1,19 +1,22 @@
 class Controller {
 
+    // Constructs this controller with the game to control and its view.
     constructor(game, view) {
         this._game = game;
         this._view = view;
     }
 
+    // Gets this controller game.
     get game() {
         return this._game;
     }
 
+    // Gets this controller view.
     get view() {
         return this._view;
     }
 
-    //Assigns the given box to the current player of the game.
+    // Assigns the given box to the current player of the game.
     writePlayerTo(box) {
         let boxPos = box.data('pos');
         this.game.playAt(boxPos.row, boxPos.col);
@@ -21,7 +24,7 @@ class Controller {
 
     // Makes the current player play and passes to the next player if the current
     // round is not over.
-    makeAMove(box) {
+    handle(box) {
         if (!this.game.isOver()) {
             this.writePlayerTo(box);
             this.game.nextPlayer();

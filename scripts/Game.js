@@ -44,7 +44,7 @@ class Game {
 	// Sets the specified player as an AI. value is 0 for X and 1 for O.
 	set ai_player(value) {
 		if (value != 0 && value != 1) throw value + " is not a valid player id.";
-		game._players[value].strategy = new UnbeatableStrategy(game);
+		game._players[value].strategy = new RandomStrategy(game);
 		this._currentPlayer = 1 - value;
 	}
 
