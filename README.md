@@ -3,7 +3,7 @@ Simple implementation of [*tic tac toe*](https://en.wikipedia.org/wiki/Tic-tac-t
 
 I developed this game during the first year of of my Bachelor's degree in Computer Science. I have done it during my free time. I did it with the objective to teach myself the fundamentals of HTML, CSS, and JavaScript.
 
-Later I tried implementing the min max algorithm so that the user could play against a perfect AI.
+Later I tried implementing the min max algorithm so that the user could play against a perfect AI. I did not finish this feature.
 
 ## Features
 - **Theme:** it is possible to switch between day and night mode.
