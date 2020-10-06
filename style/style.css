@@ -120,7 +120,7 @@ button:hover {
 }
 
 #start_menu #start_title {
-	font-size: 1.2em;	
+	font-size: 1.2em;
 }
 
 #start_menu #start_subtitle {
@@ -146,4 +146,19 @@ button:hover {
 	margin: 10px;
 	display: flex;
 	justify-content: space-around;
+}
+
+
+#github-message-container {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0.5em;
+	margin-left: auto;
+	margin-right: auto;
+	width: fit-content;
+}
+
+#github-message {
+	font-family: Arial, Helvetica, sans-serif;
 }

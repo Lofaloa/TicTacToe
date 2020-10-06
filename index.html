@@ -1,54 +1,64 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
-    <title>Tic Tac Toe</title>
-    <meta charset="utf-8">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./style/style.css">
-		<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
-  </head>
 
-  <body>
-    <h1>Tic Tac Toe</h1>
-    <table id="score">
-			<tr>
-				<td><img id="crossHeader" src="./images/day/cross.png"></td>
-				<td><span id="scoreX">0</span></td>
-				<td><span id="scoreO">0</span></td>
-				<td><img id="circleHeader" src="./images/day/circle.png"</td>
-			</tr>
-		</table>
-    <table id="board">
-			<tr>
-				<td id="topLeft" data-pos='{"row": 0, "col": 0}'></td>
-				<td id="topMiddle" data-pos='{"row": 0, "col": 1}'></td>
-				<td id="topRight" data-pos='{"row": 0, "col": 2}'></td>
-			</tr>
-			<tr>
-				<td id="middleLeft"data-pos='{"row": 1, "col": 0}'></td>
-				<td id="center"data-pos='{"row": 1, "col": 1}'></td>
-				<td id="middleRight" data-pos='{"row": 1, "col": 2}'></td>
-			</tr>
-			<tr>
-				<td  id="bottomLeft" data-pos='{"row": 2, "col": 0}'></td>
-				<td id="bottomMiddle" data-pos='{"row": 2, "col": 1}'></td>
-				<td id="bottomRight" data-pos='{"row": 2, "col": 2}'></td>
-			</tr>
-		</table>
-		<div class="options">
-			<i title="Click for night theme" id="theme_control" class="far fa-moon"></i>
-		</div>
-		<script src="./scripts/RandomStrategy.js"></script>
-		<script src="./scripts/UnbeatableStrategy.js"></script>
-		<script src="./scripts/Player.js"></script>
-		<script src="scripts/Board.js"></script>
-		<script src="./scripts/Game.js"></script>
-		<script src="scripts/Timer.js"></script>
-		<script src="./scripts/View.js"></script>
-		<script src="scripts/Controller.js"></script>
-    <script src="./scripts/main.js"></script>
-  </body>
+<head>
+	<title>Tic Tac Toe</title>
+	<meta charset="utf-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+		integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="./style/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+</head>
+
+<body>
+	<h1>Tic Tac Toe</h1>
+	<table id="score">
+		<tr>
+			<td><img id="crossHeader" src="./images/day/cross.png"></td>
+			<td><span id="scoreX">0</span></td>
+			<td><span id="scoreO">0</span></td>
+			<td><img id="circleHeader" src="./images/day/circle.png" </td>
+		</tr>
+	</table>
+	<table id="board">
+		<tr>
+			<td id="topLeft" data-pos='{"row": 0, "col": 0}'></td>
+			<td id="topMiddle" data-pos='{"row": 0, "col": 1}'></td>
+			<td id="topRight" data-pos='{"row": 0, "col": 2}'></td>
+		</tr>
+		<tr>
+			<td id="middleLeft" data-pos='{"row": 1, "col": 0}'></td>
+			<td id="center" data-pos='{"row": 1, "col": 1}'></td>
+			<td id="middleRight" data-pos='{"row": 1, "col": 2}'></td>
+		</tr>
+		<tr>
+			<td id="bottomLeft" data-pos='{"row": 2, "col": 0}'></td>
+			<td id="bottomMiddle" data-pos='{"row": 2, "col": 1}'></td>
+			<td id="bottomRight" data-pos='{"row": 2, "col": 2}'></td>
+		</tr>
+	</table>
+	<div class="options">
+		<i title="Click for night theme" id="theme_control" class="far fa-moon"></i>
+	</div>
+
+
+	<div id="github-message-container">
+		<p id="github-message" align="center">✋ Check the source out on <a href="https://github.com/Lofaloa/TicTacToe">Github</a>! 😁 (Logan Farci - 2018)</p>
+	</div>
+
+
+
+	<script src="./scripts/RandomStrategy.js"></script>
+	<script src="./scripts/UnbeatableStrategy.js"></script>
+	<script src="./scripts/Player.js"></script>
+	<script src="scripts/Board.js"></script>
+	<script src="./scripts/Game.js"></script>
+	<script src="scripts/Timer.js"></script>
+	<script src="./scripts/View.js"></script>
+	<script src="scripts/Controller.js"></script>
+	<script src="./scripts/main.js"></script>
+</body>
+
 </html>
-
